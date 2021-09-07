@@ -1,0 +1,33 @@
+﻿@model KitapMağazası.Models.Entity.TBLHAREKET
+@{
+    ViewBag.Title = "Odunciade";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))
+{
+    <div style="margin-bottom:15px"> </div>
+    <div class="form-group">
+        <label>Hareket ID</label>
+        @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+        <br />
+
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(k => k.TBLKITAP.AD, new { @class = "form-control" })
+        <label>Üye</label>
+        @Html.TextBoxFor(k => k.TBLUYELER.AD, new { @class = "form-control" })
+        <label>Personel</label>
+        @Html.TextBoxFor(k => k.PERSONEL, new { @class = "form-control" })
+        <label>Alış Tarihi</label>
+        @Html.TextBoxFor(k => k.ALISTARİH, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+        <label> Normal İade Tarihi</label>
+        @Html.TextBoxFor(k => k.İADETARİH, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+        <label>Üyenin Getirdiği İade Tarihi</label>
+        <input type="text" class="form-control" name="UYEGETIRTARIH"  value="@DateTime.Now.AddDays(7).ToShortDateString()" />
+    </div>
+    <div>
+        <button class="btn btn-info"> Ödünç Kitabı Geri Al</button>
+    </div>
+}
+
+
